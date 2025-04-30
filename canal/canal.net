@@ -10,7 +10,7 @@ R1 N001 N002 1.01k
 V1 EletrodoA EletrodoB SINE(0 800u 160) AC 800u
 * G = 1 + (100k / Rg) p/ G = 100 Rg = 1.01k
 * AMPLIFICADOR DE INSTRUMENTAÇÃO
-.ac oct 100000 1 10000000
+.ac oct 100000 1 10000
 .lib Z:\home\nailsonchagas\Downloads\EEG\canal\INA823.LIB
 .backanno
 .end
