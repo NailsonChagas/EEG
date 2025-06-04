@@ -1,0 +1,173 @@
+Circuit: * Z:\home\nailsonchagas\Downloads\EEG\canal\new_new_canal.asc
+
+WARNING: Node U1:N1980383 is floating.
+WARNING: Node U1:N1980745 is floating.
+
+Direct Newton iteration failed to find .op point.  (Use ".option noopiter" to skip.)
+Starting Gmin stepping
+Gmin = 10
+Gmin = 1.07374
+vernier = 0.5
+vernier = 0.25
+vernier = 0.125
+vernier = 0.0625
+Gmin = 1.02494
+vernier = 0.03125
+vernier = 0.015625
+vernier = 0.0078125
+Gmin = 1.01302
+vernier = 0.00390625
+vernier = 0.00195313
+Gmin = 1.00711
+vernier = 0.00260417
+vernier = 0.00130208
+Gmin = 1.004
+vernier = 0.000651042
+vernier = 0.000868055
+vernier = 0.000434028
+Gmin = 1.00329
+vernier = 0.000578703
+vernier = 0.000434027
+Gmin = 1.00242
+Gmin = 0
+Gmin stepping failed
+
+Starting source stepping with srcstepmethod=0
+Source Step = 3.0303%
+vernier = 0.25
+Source Step = 7.57576%
+Source Step = 15.1515%
+Source Step = 22.7273%
+Source Step = 30.303%
+Source Step = 37.8788%
+Source Step = 37.8965%
+Source Step = 37.9261%
+Source Step = 37.9557%
+Source Step = 37.9853%
+Source Step = 38.0149%
+Source Step = 38.0445%
+vernier = 0.00146484
+Source Step = 38.0889%
+Source Step = 38.1333%
+Source Step = 38.1777%
+Source Step = 38.2221%
+Source Step = 38.2665%
+vernier = 0.00219727
+Source Step = 38.3308%
+Source Step = 38.3974%
+Source Step = 38.464%
+Source Step = 38.5306%
+Source Step = 38.5972%
+vernier = 0.0032959
+Source Step = 38.6904%
+Source Step = 38.7902%
+Source Step = 38.8901%
+Source Step = 38.99%
+Source Step = 39.0899%
+vernier = 0.00494385
+Source Step = 39.2247%
+Source Step = 39.3745%
+Source Step = 39.5243%
+Source Step = 39.6741%
+Source Step = 39.824%
+vernier = 0.00741577
+Source Step = 40.0187%
+Source Step = 40.2434%
+Source Step = 40.4682%
+Source Step = 40.6929%
+Source Step = 40.9176%
+vernier = 0.0111237
+Source Step = 41.1985%
+Source Step = 41.5356%
+Source Step = 41.8727%
+Source Step = 42.2097%
+Source Step = 42.5468%
+vernier = 0.0166855
+Source Step = 42.9513%
+Source Step = 43.4569%
+Source Step = 43.9626%
+Source Step = 44.4682%
+Source Step = 44.9738%
+vernier = 0.0250282
+Source Step = 45.5553%
+Source Step = 46.3137%
+Source Step = 47.0721%
+Source Step = 47.8306%
+Source Step = 48.589%
+vernier = 0.0375423
+Source Step = 49.4233%
+Source Step = 50.5609%
+Source Step = 51.6986%
+Source Step = 52.8362%
+Source Step = 53.9739%
+vernier = 0.0563135
+Source Step = 55.1684%
+Source Step = 56.8749%
+Source Step = 58.5813%
+Source Step = 60.2878%
+Source Step = 61.9943%
+Source Step = 63.7007%
+vernier = 0.0844703
+Source Step = 66.2604%
+Source Step = 68.8201%
+Source Step = 71.3798%
+Source Step = 73.9396%
+Source Step = 76.4993%
+vernier = 0.126705
+Source Step = 80.2108%
+Source Step = 84.0504%
+Source Step = 87.8899%
+Source Step = 91.7295%
+Source Step = 93.2833%
+Starting source stepping with srcstepmethod=1
+Source Step = 3.0303%
+vernier = 0.25
+Source Step = 1.70455%
+Source Step = 3.59848%
+Source Step = 5.49242%
+Source Step = 7.38636%
+Source Step = 9.2803%
+vernier = 0.09375
+Source Step = 11.9318%
+Source Step = 14.7727%
+Source Step = 17.6136%
+Source Step = 20.4545%
+Source Step = 23.2955%
+vernier = 0.140625
+Source Step = 27.1307%
+Source Step = 31.392%
+Source Step = 35.6534%
+Source Step = 39.9148%
+Source Step = 44.1761%
+vernier = 0.210938
+Source Step = 49.7159%
+Source Step = 56.108%
+Source Step = 62.5%
+Source Step = 68.892%
+Source Step = 75.2841%
+vernier = 0.316406
+Source Step = 83.2741%
+Source Step = 92.8622%
+Source Step = 94.7948%
+Source stepping failed
+
+Pseudo Transient succeeded in finding the operating point at 22.2365 s.
+
+Date: Thu May 29 17:31:33 2025
+Total elapsed time: 34.034 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 76054
+traniter = 59423
+tranpoints = 24757
+accept = 17425
+rejected = 7360
+matrix size = 433
+fillins = 1393
+solver = Normal
+Thread vector: 116.5/25.8[12] 30.4/13.4[12] 26.4/12.3[12] 2.0/6.0[1]  2592/500
+Matrix Compiler1: 137.85 KB object code size  68.3/34.8/[13.7]
+Matrix Compiler2: 62.86 KB object code size  16.4/17.9/[4.0]
+
