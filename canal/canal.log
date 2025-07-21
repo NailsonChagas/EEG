@@ -1,40 +1,27 @@
-Circuit: * Z:\home\nailsonchagas\Downloads\EEG\canal\canal.asc
+Circuit: * Z:\mnt\9a3f66c9-6d6d-4e50-b992-ca8f034e1022\Download\EEG\canal\canal.asc
 
 WARNING: Node U1:N1980383 is floating.
 WARNING: Node U1:N1980745 is floating.
 
-WARNING: Less than two connections to node N001.  This node is used by V2.
+WARNING: Less than two connections to node N004.  This node is used by V2.
 Direct Newton iteration failed to find .op point.  (Use ".option noopiter" to skip.)
 Starting Gmin stepping
-Gmin = 10
-Gmin = 1.07374
+Increasing initial diagonal Gmin to 100
+Gmin = 100
 vernier = 0.5
 vernier = 0.25
 vernier = 0.125
-Gmin = 1.02031
+Gmin = 48.1882
 vernier = 0.0625
 vernier = 0.03125
 vernier = 0.015625
-Gmin = 1.01993
 vernier = 0.0078125
+Gmin = 46.3658
 vernier = 0.00390625
-Gmin = 1.012
-vernier = 0.00520833
-vernier = 0.00260417
-vernier = 0.00130208
-Gmin = 1.00838
-vernier = 0.00173611
-vernier = 0.000868055
-Gmin = 1.0063
-vernier = 0.00115741
-vernier = 0.000578703
-vernier = 0.000771604
-Gmin = 1.0049
-vernier = 0.000578703
-vernier = 0.000434027
-Gmin = 1.00401
-vernier = 0.000578703
-vernier = 0.000434027
+vernier = 0.00195313
+vernier = 0.000976563
+vernier = 0.000488281
+Gmin = 46.3149
 Gmin = 0
 Gmin stepping failed
 
@@ -142,23 +129,23 @@ Source Step = 100%
 Source Step = 99.0266%
 Source stepping failed
 
-Pseudo Transient succeeded in finding the operating point at 23.1308 s.
+Pseudo Transient succeeded in finding the operating point at 23.032 s.
 
-Date: Fri Jun 13 15:26:49 2025
-Total elapsed time: 40.951 seconds.
+Date: Mon Jul 21 19:26:24 2025
+Total elapsed time: 20.415 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 90997
-traniter = 71732
-tranpoints = 35108
-accept = 24341
-rejected = 10795
-matrix size = 437
-fillins = 1327
+totiter = 29485
+traniter = 13889
+tranpoints = 6799
+accept = 4697
+rejected = 2123
+matrix size = 494
+fillins = 1328
 solver = Normal
-Thread vector: 116.1/25.8[12] 25.8/13.1[12] 26.0/10.7[12] 2.2/7.1[1]  2592/500
-Matrix Compiler1: 125.44 KB object code size  60.8/32.4/[12.9]
-Matrix Compiler2: 61.67 KB object code size  15.5/18.7/[5.1]
+Thread vector: 93.3/40.9[12] 18.7/11.3[10] 28.5/14.6[12] 2.5/10.4[1]  2592/500
+Matrix Compiler1: 122.64 KB object code size  33.2/14.8/[7.8]
+Matrix Compiler2: 67.22 KB object code size  10.4/10.8/[6.6]
 

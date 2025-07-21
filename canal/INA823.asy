@@ -13,7 +13,7 @@ WINDOW 0 64 -48 Bottom 2
 WINDOW 3 9 -15 Top 2
 SYMATTR Value INA823
 SYMATTR Prefix X
-SYMATTR ModelFile Z:\home\nailsonchagas\Downloads\EEG\canal\INA823.LIB
+SYMATTR ModelFile Z:\mnt\9a3f66c9-6d6d-4e50-b992-ca8f034e1022\Download\EEG\canal\INA823.LIB
 PIN -96 -64 BOTTOM 8
 PINATTR PinName IN+
 PINATTR SpiceOrder 1
