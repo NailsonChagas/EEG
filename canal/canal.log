@@ -130,21 +130,21 @@ Source stepping failed
 
 Pseudo Transient succeeded in finding the operating point at 26.979 s.
 
-Date: Mon Jul 21 22:33:55 2025
-Total elapsed time: 20.326 seconds.
+Date: Tue Jul 22 19:20:35 2025
+Total elapsed time: 23.202 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 22915
-traniter = 7358
-tranpoints = 3542
-accept = 2724
-rejected = 834
+totiter = 22787
+traniter = 7230
+tranpoints = 3480
+accept = 2685
+rejected = 811
 matrix size = 488
-fillins = 1402
+fillins = 1403
 solver = Normal
-Thread vector: 68.3/44.8[3] 17.7/15.0[3] 14.3/10.0[3] 2.0/24.6[1]  2592/500
-Matrix Compiler1: 127.93 KB object code size  36.4/17.5/[8.4]
-Matrix Compiler2: 68.25 KB object code size  10.4/10.7/[5.9]
+Thread vector: 73.2/31.2[11] 17.2/11.1[6] 16.2/7.9[11] 2.7/7.6[1]  2592/500
+Matrix Compiler1: 127.97 KB object code size  34.3/15.5/[7.8]
+Matrix Compiler2: 68.26 KB object code size  10.4/13.0/[6.2]
 
