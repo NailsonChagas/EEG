@@ -1,0 +1,70 @@
+* Z:\mnt\9a3f66c9-6d6d-4e50-b992-ca8f034e1022\Download\EEG\canal\canal.asc
+XU1 EletrodoA EletrodoB V+ V- InAmp 0 N015 N018 INA823
+R3 0 EletrodoA 100k
+R4 0 EletrodoB 100k
+C1 V+ 0 1µ
+C2 V- 0 1µ
+R1 N015 N018 1.01k
+V1 EletrodoA EletrodoB SINE(0 800u 100) AC 1
+XU2 N014 HP150m V+ V- HP150m LT1112
+R2 N014 0 107k
+C3 N014 InAmp 10µ
+R20 N010 N009 10k
+R21 N009 HP150m 10k
+R22 N005 N010 43.2
+C11 N006 N005 1µ
+R23 N011 N006 162k
+C12 N011 HP150m 1µ
+R24 Notch60 N005 86.6
+R25 N011 0 7.87Meg
+XU10 0 N009 V+ V- N010 LT1124
+XU11 0 N005 V+ V- N006 LT1124
+XU12 N011 N012 V+ V- Notch60 LT1124
+R26 Notch60 N012 1k
+R27 N012 0 1k
+XU4 0 N008 V+ V- LP160 LT1124
+C6 LP160 N008 100n
+R11 N008 N007 715
+C7 N007 0 1.62µ
+R12 N007 Notch60 499
+R13 LP160 N007 5.23k
+XU15 N017 N013 V+ V- offset LT1677
+R40 N017 N016 1k
+R41 N017 LP160 1k
+V8 N016 0 1.65
+R37 offset N013 1k
+R38 N013 0 1k
+XU6 N002 V+ N001 LT317A
+R9 V+ N002 120
+R10 N002 0 200
+C10 N001 0 0.1µ
+C13 V+ 0 1µ
+XU7 N004 N003 V- LM337
+R14 V- N003 120
+R15 N003 0 200
+C14 V- 0 1µ
+V§Bateria N001 N004 9
+C4 0 N004 0.1µ
+R5 N001 0 1Meg
+R6 0 N004 1Meg
+C5 0 N004 1000µ
+C8 N001 0 1000µ
+* K = 1 + (100k / Rg) p/ K = 100.0099 Rg = 1.01k
+* AMPLIFICADOR DE INSTRUMENTAÇÃO
+.tran 0 0.8 0.7
+* High-Pass; 1st order Bessel; 150mHz passband; \nOptimize: Noise; +Vs: 3.3; -Vs: -3.3; GBW comp
+* Analog Filter Wizard
+* Bandstop Filter- 2nd order Bessel  Passband:\nAo: 1.000 V/V, Fc: 60 Hz, BWp: 1 Hz, Rp: 1.000 dB\nStopband:\nBWs: 100 mHz, Asb: -40.00 dB, Gain 2V/V
+* TI Filter Design Tool
+* Lowpass Filter- 2nd order Bessel\nPassband: Ao: 10.60 V/V, Fp: 160 Hz, Rp: 1.000 dB\nStopband: Fs: 1.6 kHz, Asb: -40.00 dB\nMultiple feedback - TI filter design tool
+* Offset de 1.65V para remover a parte negativa
+* Vout = -1.25 × (1 + R2/R1) + (-I_adj × R2)\n-3.32 = -1,25 * (1 + 200/120) - (0,00005 × 200)
+* Fonte simétrica +-3.3V\nAlimentado por bateria de 9V
+* FONTE
+* CANAL
+* Vout = 1.25 × (1 + R2/R1) + (I_adj × R2)
+.lib INA823.sub
+.lib LM337.sub
+.lib LTC.lib
+.backanno
+.end
