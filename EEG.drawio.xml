@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0" version="28.1.2">
+  <diagram name="Page-1" id="1bdsyMAZcUdasrtTzLQx">
+    <mxGraphModel dx="1584" dy="851" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-2" target="CFymIBE_Xp2cb3vo9cts-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-2" value="&lt;div&gt;&lt;b&gt;Amplificador de Instrumentação&lt;/b&gt;&lt;/div&gt;&lt;div&gt;K = 100.0099&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="530" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-3" target="CFymIBE_Xp2cb3vo9cts-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-3" value="&lt;div&gt;&lt;b&gt;Filtro passa-alta&lt;/b&gt;&lt;/div&gt;&lt;div&gt;1ª Ordem - Bessel&lt;/div&gt;&lt;div&gt;Fc=150mHz&lt;/div&gt;&lt;div&gt;K=1&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;spacingTop=3;" vertex="1" parent="1">
+          <mxGeometry x="690" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-4" target="CFymIBE_Xp2cb3vo9cts-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-4" value="&lt;div&gt;&lt;b&gt;Filtro rejeita-faixa&lt;/b&gt;&lt;/div&gt;&lt;div&gt;2ª Ordem - Bessel&lt;/div&gt;&lt;div&gt;Fc=60Hz Bw=1Hz&lt;/div&gt;&lt;div&gt;K=2&amp;nbsp;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;spacing=2;spacingTop=3;" vertex="1" parent="1">
+          <mxGeometry x="850" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-5" target="CFymIBE_Xp2cb3vo9cts-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-5" value="&lt;div&gt;&lt;b&gt;Filtro passa-baixa&lt;/b&gt;&lt;/div&gt;&lt;div&gt;2ª Ordem - Bessel&lt;/div&gt;&lt;div&gt;Fc=160Hz&lt;/div&gt;&lt;div&gt;K=10.6V&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;spacingTop=3;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-6" value="&lt;div&gt;&lt;b&gt;Circuito de Offset&lt;/b&gt;&lt;/div&gt;&lt;div&gt;+1.65V&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="1170" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-29" value="&lt;font&gt;&lt;span&gt;&lt;span&gt;K_total * (A - B)&lt;/span&gt;&lt;/span&gt;&lt;/font&gt;" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBorderColor=default;fontSize=13;fontStyle=3;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-105" target="CFymIBE_Xp2cb3vo9cts-65">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1330" y="280" as="sourcePoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-26" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-12">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="268" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-12" value="&lt;font&gt;Eletrodo A&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="250" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-27" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="292" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-13" value="&lt;font&gt;Eletrodo B&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="280" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-23" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fontSize=13;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="280" as="sourcePoint" />
+            <mxPoint x="530" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-31" value="&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Canal 1 de &lt;i&gt;n&lt;/i&gt;&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="530" y="210" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-32" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;K_total = 2120.20988&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="330" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-59" value="&lt;font&gt;&lt;span&gt;&lt;span&gt;K_total * (C - D)&lt;/span&gt;&lt;/span&gt;&lt;/font&gt;" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBorderColor=default;fontSize=13;fontStyle=3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" target="CFymIBE_Xp2cb3vo9cts-65" source="CFymIBE_Xp2cb3vo9cts-157">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1330" y="480" as="sourcePoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-60" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-61">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="468" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-61" value="&lt;font&gt;Eletrodo C&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="450" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-62" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-63">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="492" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-63" value="&lt;font&gt;Eletrodo D&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="480" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-65" value="" style="whiteSpace=wrap;html=1;rounded=0;glass=0;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1440" y="400" width="760" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-78" value="&lt;font&gt;&lt;span&gt;&lt;span&gt;K_total * (Y - Z)&lt;/span&gt;&lt;/span&gt;&lt;/font&gt;" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBorderColor=default;fontSize=13;fontStyle=3;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" target="CFymIBE_Xp2cb3vo9cts-65" source="CFymIBE_Xp2cb3vo9cts-132">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1330" y="680" as="sourcePoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-79" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-80">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="668" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-80" value="&lt;font&gt;Eletrodo Y&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="650" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-81" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-82">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="692" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-82" value="&lt;font&gt;Eletrodo Z&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="680" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-88" value="&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Fonte&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;±3.3V / +1.65V / Ref&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="280" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-94" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.002;entryY=0.127;entryDx=0;entryDy=0;fontStyle=3;spacing=2;spacingRight=0;entryPerimeter=0;" edge="1" parent="1" target="CFymIBE_Xp2cb3vo9cts-157">
+          <mxGeometry x="-0.0547" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="420" as="sourcePoint" />
+            <mxPoint x="570.4200000000003" y="419.51" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-95" value="" style="endArrow=classic;html=1;rounded=0;fontSize=13;fontStyle=3;entryX=-0.001;entryY=0.122;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="CFymIBE_Xp2cb3vo9cts-105">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="220" as="sourcePoint" />
+            <mxPoint x="570" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-97" value="&lt;span&gt;±3.3V e 1.65V&lt;/span&gt;" style="shape=link;html=1;rounded=0;exitX=0.808;exitY=1.017;exitDx=0;exitDy=0;fontSize=14;fontStyle=3;exitPerimeter=0;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-88">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="880" y="370" as="sourcePoint" />
+            <mxPoint x="377" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-98" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.125;entryDx=0;entryDy=0;entryPerimeter=0;fontStyle=3;spacing=2;spacingRight=0;" edge="1" parent="1" target="CFymIBE_Xp2cb3vo9cts-132">
+          <mxGeometry x="-0.0547" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="620" as="sourcePoint" />
+            <mxPoint x="570" y="620" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-99" value="&lt;b&gt;&lt;i&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;+3.3V&lt;/font&gt;&lt;/i&gt;&lt;/b&gt;" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="160" as="sourcePoint" />
+            <mxPoint x="1790" y="400" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1790" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-100" value="Ref" style="shape=link;html=1;rounded=0;fontSize=14;fontStyle=3" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="300" y="120" as="sourcePoint" />
+            <mxPoint x="300" y="750.18" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-101" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.002;entryY=0.941;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="CFymIBE_Xp2cb3vo9cts-105">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="350" as="sourcePoint" />
+            <mxPoint x="528" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-102" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.001;entryY=0.938;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="CFymIBE_Xp2cb3vo9cts-157">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="550" as="sourcePoint" />
+            <mxPoint x="570" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-103" value="" style="endArrow=classic;html=1;rounded=0;entryX=-0.001;entryY=0.938;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="CFymIBE_Xp2cb3vo9cts-132">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="750" as="sourcePoint" />
+            <mxPoint x="570" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-105" value="" style="rounded=0;whiteSpace=wrap;html=1;fillOpacity=0;" vertex="1" parent="1">
+          <mxGeometry x="530" y="200" width="760" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-119" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-120" target="CFymIBE_Xp2cb3vo9cts-122">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-120" value="&lt;div&gt;&lt;b&gt;Amplificador de Instrumentação&lt;/b&gt;&lt;/div&gt;&lt;div&gt;K = 100.0099&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="530" y="650" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-121" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-122" target="CFymIBE_Xp2cb3vo9cts-124">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-122" value="&lt;div&gt;&lt;b&gt;Filtro passa-alta&lt;/b&gt;&lt;/div&gt;&lt;div&gt;1ª Ordem - Bessel&lt;/div&gt;&lt;div&gt;Fc=150mHz&lt;/div&gt;&lt;div&gt;K=1&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;spacingTop=3;" vertex="1" parent="1">
+          <mxGeometry x="690" y="650" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-123" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-124" target="CFymIBE_Xp2cb3vo9cts-126">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-124" value="&lt;div&gt;&lt;b&gt;Filtro rejeita-faixa&lt;/b&gt;&lt;/div&gt;&lt;div&gt;2ª Ordem - Bessel&lt;/div&gt;&lt;div&gt;Fc=60Hz Bw=1Hz&lt;/div&gt;&lt;div&gt;K=2&amp;nbsp;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;spacing=2;spacingTop=3;" vertex="1" parent="1">
+          <mxGeometry x="850" y="650" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-125" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-126" target="CFymIBE_Xp2cb3vo9cts-127">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-126" value="&lt;div&gt;&lt;b&gt;Filtro passa-baixa&lt;/b&gt;&lt;/div&gt;&lt;div&gt;2ª Ordem - Bessel&lt;/div&gt;&lt;div&gt;Fc=160Hz&lt;/div&gt;&lt;div&gt;K=10.6V&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;spacingTop=3;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="650" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-127" value="&lt;div&gt;&lt;b&gt;Circuito de Offset&lt;/b&gt;&lt;/div&gt;&lt;div&gt;+1.65V&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="1170" y="650" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-128" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fontSize=13;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="680" as="sourcePoint" />
+            <mxPoint x="530" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-129" value="&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Canal ... de &lt;i&gt;n&lt;/i&gt;&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="530" y="610" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-130" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;K_total = 2120.20988&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="730" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-132" value="" style="rounded=0;whiteSpace=wrap;html=1;fillOpacity=0;" vertex="1" parent="1">
+          <mxGeometry x="530" y="600" width="760" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-133" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-134" target="CFymIBE_Xp2cb3vo9cts-136">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-134" value="&lt;div&gt;&lt;b&gt;Amplificador de Instrumentação&lt;/b&gt;&lt;/div&gt;&lt;div&gt;K = 100.0099&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="530" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-135" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-136" target="CFymIBE_Xp2cb3vo9cts-138">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-136" value="&lt;div&gt;&lt;b&gt;Filtro passa-alta&lt;/b&gt;&lt;/div&gt;&lt;div&gt;1ª Ordem - Bessel&lt;/div&gt;&lt;div&gt;Fc=150mHz&lt;/div&gt;&lt;div&gt;K=1&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;spacingTop=3;" vertex="1" parent="1">
+          <mxGeometry x="690" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-137" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-138" target="CFymIBE_Xp2cb3vo9cts-140">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-138" value="&lt;div&gt;&lt;b&gt;Filtro rejeita-faixa&lt;/b&gt;&lt;/div&gt;&lt;div&gt;2ª Ordem - Bessel&lt;/div&gt;&lt;div&gt;Fc=60Hz Bw=1Hz&lt;/div&gt;&lt;div&gt;K=2&amp;nbsp;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;spacing=2;spacingTop=3;" vertex="1" parent="1">
+          <mxGeometry x="850" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-139" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-140" target="CFymIBE_Xp2cb3vo9cts-141">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-140" value="&lt;div&gt;&lt;b&gt;Filtro passa-baixa&lt;/b&gt;&lt;/div&gt;&lt;div&gt;2ª Ordem - Bessel&lt;/div&gt;&lt;div&gt;Fc=160Hz&lt;/div&gt;&lt;div&gt;K=10.6V&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;spacingTop=3;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-141" value="&lt;div&gt;&lt;b&gt;Circuito de Offset&lt;/b&gt;&lt;/div&gt;&lt;div&gt;+1.65V&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;fontStyle=0" vertex="1" parent="1">
+          <mxGeometry x="1170" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-142" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fontSize=13;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="530" y="480" as="sourcePoint" />
+            <mxPoint x="530" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-143" value="&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Canal 2 de &lt;i&gt;n&lt;/i&gt;&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="530" y="410" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-144" value="&lt;font style=&quot;font-size: 13px;&quot;&gt;K_total = 2120.20988&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="530" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-152" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-147" target="CFymIBE_Xp2cb3vo9cts-148">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-147" value="&lt;div&gt;&lt;b&gt;Amostragem&lt;/b&gt;&lt;/div&gt;&lt;div&gt;Fs=&lt;span class=&quot;qv3Wpe&quot; id=&quot;cwos&quot;&gt;(1600*2)+1 Hz&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-153" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-148" target="CFymIBE_Xp2cb3vo9cts-149">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-148" value="&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Filtro passa-alta&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;nª Ordem - Bessel&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Fc=150mHz&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-154" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-149" target="CFymIBE_Xp2cb3vo9cts-150">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-149" value="&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Filtro rejeita-faixa&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;nª Ordem - Bessel&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Fc=60Hz Bw=1Hz&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-155" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-150" target="CFymIBE_Xp2cb3vo9cts-151">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-150" value="&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Filtro passa-baixa&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;nª Ordem - Bessel&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Fc=160Hz&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1920" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-158" value="Bluetooth" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=13;fontStyle=3;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-65" target="CFymIBE_Xp2cb3vo9cts-156">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-151" value="&lt;div&gt;&lt;b&gt;Downsampling para Fs = ??? Hz&lt;/b&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2080" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-156" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;Computador&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1720" y="630" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-157" value="" style="rounded=0;whiteSpace=wrap;html=1;fillOpacity=0;" vertex="1" parent="1">
+          <mxGeometry x="530" y="400" width="760" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-159" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;Microcontrolador&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="410" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-162" value="Ref" style="endArrow=classic;html=1;rounded=0;entryX=0.537;entryY=0.007;entryDx=0;entryDy=0;entryPerimeter=0;fontStyle=3;fontSize=13;" edge="1" parent="1" target="CFymIBE_Xp2cb3vo9cts-65">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="140" as="sourcePoint" />
+            <mxPoint x="1930" y="140" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="530" y="140" />
+              <mxPoint x="1850" y="140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-163" value="&lt;font&gt;Eletrodo Ref&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="160" y="265" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-164" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-163">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="130" y="430" as="sourcePoint" />
+            <mxPoint x="300" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-166" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="CFymIBE_Xp2cb3vo9cts-165" target="CFymIBE_Xp2cb3vo9cts-88">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CFymIBE_Xp2cb3vo9cts-165" value="&lt;div&gt;&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Bateria&lt;/font&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;9V&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="160" y="60" width="80" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
