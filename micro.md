@@ -28,31 +28,26 @@
 | **Pinos (Pacotes)**             | Até 128 pinos                   | Até 100 pinos                   | Até 100 pinos                  | G474 oferece o pacote maior                 |
 
 ### STM32G474RE
-
 A **escolha para performance e controle**. Ideal para aplicações que demandam:
-
+* Suporta ADC oversampling via hardware
 * Alta velocidade de processamento (**170 MHz**).
 * Periféricos analógicos avançados e numerosos (**ADCs, DACs, OPAMPs, COMPs**).
 * Controle preciso de potência com **HRTIM**.
 * Comunicação industrial robusta com múltiplos **FDCAN**.
 
 ### STM32G431RB
-
 A **versão econômica do G4**. Boa escolha quando se precisa do:
-
+* Suporta ADC oversampling via hardware
 * Núcleo rápido com **instruções DSP** e **aceleradores matemáticos**.
 * Recursos analógicos razoáveis, mas sem exageros.
 * Custo mais baixo em comparação ao G474.
 
 ### STM32L471VG
-
 A **escolha para eficiência energética e duração de bateria**. Destaques:
-
 * **Ultra baixo consumo** em Stop (1.1 µA) e Standby (120 nA).
 * Até **1 MB de memória Flash**.
 * Recursos adicionais como **Capacitive Sensing (24 canais)** e **DFSDM** para filtragem digital de sinais.
 * Indicado para:
-
   * Dispositivos portáteis e movidos a bateria.
   * Sensores que passam a maior parte do tempo em modo de baixo consumo.
   * Aplicações que exigem longa autonomia.
