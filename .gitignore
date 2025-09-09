@@ -1,1 +1,12 @@
+/venv
 /**/venv
+
+*.raw
+*.log
+*.plt
+*.net
+/**/*.net
+/**/*.raw
+/**/*.log
+/**/*.plt
+/**/*.net
