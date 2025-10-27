@@ -53,7 +53,7 @@ TIM_HandleTypeDef htim2;
 /* USER CODE BEGIN PV */
 // como é alocada para o DMA n precisa ser volatile (https://community.st.com/t5/stm32-mcus-embedded-software/should-dma-variables-be-volatile/td-p/794260)
 uint16_t adc_dual_buffer[NUMBER_OF_AQ*NUMBER_OF_AD];
-volatile uint16_t adc_voltage[NUMBER_OF_AQ*NUMBER_OF_AD];
+volatile float adc_voltage[NUMBER_OF_AQ*NUMBER_OF_AD];
 volatile uint16_t test = 0;
 /* USER CODE END PV */
 
@@ -219,7 +219,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIG_T2_TRGO;
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
-  hadc1.Init.DMAContinuousRequests = DISABLE;
+  hadc1.Init.DMAContinuousRequests = ENABLE;
   hadc1.Init.Overrun = ADC_OVR_DATA_PRESERVED;
   hadc1.Init.OversamplingMode = DISABLE;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
