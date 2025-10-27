@@ -54,7 +54,7 @@ TIM_HandleTypeDef htim2;
 // como é alocada para o DMA n precisa ser volatile (https://community.st.com/t5/stm32-mcus-embedded-software/should-dma-variables-be-volatile/td-p/794260)
 uint16_t adc_dual_buffer[NUMBER_OF_AQ*NUMBER_OF_AD];
 volatile uint16_t adc_voltage[NUMBER_OF_AQ*NUMBER_OF_AD];
-
+volatile uint16_t test = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -72,6 +72,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 	{
 		adc_voltage[i] = adc_dual_buffer[i] * (float)ADC12_TO_VOLTAGE;
 	}
+	test++;
 }
 
 void check_status(HAL_StatusTypeDef status);
@@ -344,7 +345,7 @@ static void MX_TIM2_Init(void)
   {
     Error_Handler();
   }
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
   {
