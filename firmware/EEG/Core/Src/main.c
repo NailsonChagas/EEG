@@ -58,14 +58,13 @@ DMA_HandleTypeDef hdma_adc1;
 
 TIM_HandleTypeDef htim2;
 
-osThreadId defaultTaskHandle;
+osThreadId FilterTaskHandle;
 /* USER CODE BEGIN PV */
 // como é alocada para o DMA n precisa ser volatile (https://community.st.com/t5/stm32-mcus-embedded-software/should-dma-variables-be-volatile/td-p/794260)
 uint16_t adc_dual_buffer[NUMBER_OF_AQ*NUMBER_OF_AD];
-volatile float adc_voltage[NUMBER_OF_AQ*NUMBER_OF_AD];
-volatile uint16_t test = 0;
-
 BiquadFilter notch_filter_AD1, notch_filter_AD2;
+volatile float filtered_ad1, filtered_ad2;
+SemaphoreHandle_t sem_ad = NULL;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -75,17 +74,16 @@ static void MX_DMA_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_ADC2_Init(void);
 static void MX_TIM2_Init(void);
-void StartDefaultTask(void const * argument);
+void StartFilterTask(void const * argument);
 
 /* USER CODE BEGIN PFP */
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
-	for (uint8_t i = 0; i < (NUMBER_OF_AQ*NUMBER_OF_AD); i++)
-	{
-		adc_voltage[i] = adc_dual_buffer[i] * (float)ADC12_TO_VOLTAGE;
-	}
-	test++;
+	// Ao ler AD abre o semaforo
+	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+	xSemaphoreGiveFromISR(sem_ad, &xHigherPriorityTaskWoken);
+	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 
 void check_status(HAL_StatusTypeDef status);
@@ -150,6 +148,7 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
+  sem_ad = xSemaphoreCreateBinary();
   /* USER CODE END RTOS_SEMAPHORES */
 
   /* USER CODE BEGIN RTOS_TIMERS */
@@ -161,9 +160,9 @@ int main(void)
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
-  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+  /* definition and creation of FilterTask */
+  osThreadDef(FilterTask, StartFilterTask, osPriorityNormal, 0, 256);
+  FilterTaskHandle = osThreadCreate(osThread(FilterTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -446,20 +445,28 @@ void check_status(HAL_StatusTypeDef status)
 }
 /* USER CODE END 4 */
 
-/* USER CODE BEGIN Header_StartDefaultTask */
+/* USER CODE BEGIN Header_StartFilterTask */
 /**
-  * @brief  Function implementing the defaultTask thread.
+  * @brief  Function implementing the FilterTask thread.
   * @param  argument: Not used
   * @retval None
   */
-/* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void const * argument)
+/* USER CODE END Header_StartFilterTask */
+void StartFilterTask(void const * argument)
 {
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	  // se estiver aberto pega para si e fecha
+	  xSemaphoreTake(sem_ad, portMAX_DELAY);
+	  float ad1 = adc_dual_buffer[0] * ADC12_TO_VOLTAGE;
+	  float ad2 = adc_dual_buffer[1] * ADC12_TO_VOLTAGE;
+
+	  filtered_ad1 = apply_filter(&notch_filter_AD1, ad1);
+	  filtered_ad2 = apply_filter(&notch_filter_AD2, ad2);
+
+	  //TO DO: Enviar os dados
   }
   /* USER CODE END 5 */
 }
