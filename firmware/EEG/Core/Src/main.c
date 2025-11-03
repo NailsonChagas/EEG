@@ -27,7 +27,10 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+typedef struct{
+	float ch1;
+	float ch2;
+} FilteredData;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -56,6 +59,8 @@ ADC_HandleTypeDef hadc1;
 ADC_HandleTypeDef hadc2;
 DMA_HandleTypeDef hdma_adc1;
 
+UART_HandleTypeDef hlpuart1;
+
 TIM_HandleTypeDef htim2;
 
 osThreadId FilterTaskHandle;
@@ -64,7 +69,10 @@ osThreadId FilterTaskHandle;
 uint16_t adc_dual_buffer[NUMBER_OF_AQ * NUMBER_OF_AD];
 BiquadFilter notch_filter_AD1, notch_filter_AD2;
 volatile float filtered_ad1, filtered_ad2;
+SemaphoreHandle_t sem_uart = NULL;
 SemaphoreHandle_t sem_ad = NULL;
+QueueHandle_t queue_tx = NULL;
+uint32_t teste = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -74,6 +82,7 @@ static void MX_DMA_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_ADC2_Init(void);
 static void MX_TIM2_Init(void);
+static void MX_LPUART1_UART_Init(void);
 void StartFilterTask(void const *argument);
 
 /* USER CODE BEGIN PFP */
@@ -83,6 +92,25 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
 	BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 	xSemaphoreGiveFromISR(sem_ad, &xHigherPriorityTaskWoken);
 	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+}
+
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart) {
+	BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
+	xSemaphoreGiveFromISR(sem_uart, &pxHigherPriorityTaskWoken);
+	portYIELD_FROM_ISR(pxHigherPriorityTaskWoken); //
+}
+
+void SendDataTask(void *param) {
+	FilteredData ad_data;
+
+	while (1) {
+		if (xQueueReceive(queue_tx, &ad_data, portMAX_DELAY) == pdPASS) {
+			HAL_UART_Transmit(&hlpuart1, (uint8_t*) &ad_data,
+					sizeof(FilteredData), portMAX_DELAY);
+			teste++;
+		}
+		taskYIELD();
+	}
 }
 
 void check_status(HAL_StatusTypeDef status);
@@ -125,6 +153,7 @@ int main(void) {
 	MX_ADC1_Init();
 	MX_ADC2_Init();
 	MX_TIM2_Init();
+	MX_LPUART1_UART_Init();
 	/* USER CODE BEGIN 2 */
 
 	init_notch_filter(&notch_filter_AD1, FS, FC, BW);
@@ -136,7 +165,7 @@ int main(void) {
 	check_status(HAL_ADC_Start(&hadc2));
 	check_status(
 			HAL_ADCEx_MultiModeStart_DMA(&hadc1, (uint32_t*) adc_dual_buffer,
-					NUMBER_OF_AQ));
+			NUMBER_OF_AQ));
 
 	HAL_TIM_Base_Start(&htim2);
 
@@ -148,6 +177,7 @@ int main(void) {
 
 	/* USER CODE BEGIN RTOS_SEMAPHORES */
 	/* add semaphores, ... */
+	sem_uart = xSemaphoreCreateBinary();
 	sem_ad = xSemaphoreCreateBinary();
 	/* USER CODE END RTOS_SEMAPHORES */
 
@@ -157,15 +187,17 @@ int main(void) {
 
 	/* USER CODE BEGIN RTOS_QUEUES */
 	/* add queues, ... */
+	queue_tx = xQueueCreate(16, sizeof(FilteredData));
 	/* USER CODE END RTOS_QUEUES */
 
 	/* Create the thread(s) */
 	/* definition and creation of FilterTask */
-	osThreadDef(FilterTask, StartFilterTask, osPriorityNormal, 0, 256);
+	osThreadDef(FilterTask, StartFilterTask, osPriorityAboveNormal, 0, 256);
 	FilterTaskHandle = osThreadCreate(osThread(FilterTask), NULL);
 
 	/* USER CODE BEGIN RTOS_THREADS */
 	/* add threads, ... */
+	xTaskCreate(SendDataTask, "SendData", 256, NULL, 0, NULL);
 	/* USER CODE END RTOS_THREADS */
 
 	/* Start scheduler */
@@ -346,6 +378,50 @@ static void MX_ADC2_Init(void) {
 }
 
 /**
+ * @brief LPUART1 Initialization Function
+ * @param None
+ * @retval None
+ */
+static void MX_LPUART1_UART_Init(void) {
+
+	/* USER CODE BEGIN LPUART1_Init 0 */
+
+	/* USER CODE END LPUART1_Init 0 */
+
+	/* USER CODE BEGIN LPUART1_Init 1 */
+
+	/* USER CODE END LPUART1_Init 1 */
+	hlpuart1.Instance = LPUART1;
+	hlpuart1.Init.BaudRate = 209700;
+	hlpuart1.Init.WordLength = UART_WORDLENGTH_8B;
+	hlpuart1.Init.StopBits = UART_STOPBITS_1;
+	hlpuart1.Init.Parity = UART_PARITY_NONE;
+	hlpuart1.Init.Mode = UART_MODE_TX_RX;
+	hlpuart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+	hlpuart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+	hlpuart1.Init.ClockPrescaler = UART_PRESCALER_DIV1;
+	hlpuart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+	if (HAL_UART_Init(&hlpuart1) != HAL_OK) {
+		Error_Handler();
+	}
+	if (HAL_UARTEx_SetTxFifoThreshold(&hlpuart1, UART_TXFIFO_THRESHOLD_1_8)
+			!= HAL_OK) {
+		Error_Handler();
+	}
+	if (HAL_UARTEx_SetRxFifoThreshold(&hlpuart1, UART_RXFIFO_THRESHOLD_1_8)
+			!= HAL_OK) {
+		Error_Handler();
+	}
+	if (HAL_UARTEx_DisableFifoMode(&hlpuart1) != HAL_OK) {
+		Error_Handler();
+	}
+	/* USER CODE BEGIN LPUART1_Init 2 */
+
+	/* USER CODE END LPUART1_Init 2 */
+
+}
+
+/**
  * @brief TIM2 Initialization Function
  * @param None
  * @retval None
@@ -427,6 +503,7 @@ void check_status(HAL_StatusTypeDef status) {
 	if (status != HAL_OK)
 		Error_Handler();
 }
+
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_StartFilterTask */
@@ -448,7 +525,8 @@ void StartFilterTask(void const *argument) {
 		filtered_ad1 = apply_filter(&notch_filter_AD1, ad1);
 		filtered_ad2 = apply_filter(&notch_filter_AD2, ad2);
 
-		//TO DO: Enviar os dados
+		FilteredData data = { filtered_ad1, filtered_ad2 };
+		xQueueSend(queue_tx, &data, 0);
 	}
 	/* USER CODE END 5 */
 }
