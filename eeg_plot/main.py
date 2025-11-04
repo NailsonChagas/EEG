@@ -63,11 +63,11 @@ class SerialReader(threading.Thread):
         self.running = False
 
 
-class PlotWindow(pg.GraphicsLayoutWidget):
+class EegWindow(pg.GraphicsLayoutWidget):
     """Gráficos: sinais no tempo e FFT em dB"""
     def __init__(self, reader: SerialReader, sample_rate: float = 3300.0, update_rate: int = 60):
         super().__init__()
-        self.setWindowTitle("Leitura UART + FFT (dB)")
+        self.setWindowTitle("EEG + FFT (dB)")
         self.resize(1000, 800)
         self.reader = reader
         self.sample_rate = sample_rate
@@ -165,7 +165,7 @@ def main():
     reader.start()
 
     app = QtWidgets.QApplication(sys.argv)
-    win = PlotWindow(reader, sample_rate=3300.0, update_rate=60)
+    win = EegWindow(reader, sample_rate=3300.0, update_rate=60)
     win.show()
 
     try:
