@@ -101,17 +101,23 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart) {
 }
 
 void SendDataTask(void *param) {
-	FilteredData ad_data;
+    FilteredData ad_data;
+    const uint8_t start = '$';
+    const uint8_t end = '\n';
+    const uint8_t uint8_size = sizeof(uint8_t);
+    const uint8_t data_block_size = sizeof(FilteredData);
 
-	while (1) {
-		if (xQueueReceive(queue_tx, &ad_data, portMAX_DELAY) == pdPASS) {
-			HAL_UART_Transmit(&hlpuart1, (uint8_t*) &ad_data,
-					sizeof(FilteredData), portMAX_DELAY);
-			teste++;
-		}
-		taskYIELD();
-	}
+    while (1) {
+        if (xQueueReceive(queue_tx, &ad_data, portMAX_DELAY) == pdPASS) {
+            HAL_UART_Transmit(&hlpuart1, &start, uint8_size, HAL_MAX_DELAY);
+            HAL_UART_Transmit(&hlpuart1, (uint8_t*)&ad_data, data_block_size, HAL_MAX_DELAY);
+            HAL_UART_Transmit(&hlpuart1, &end, uint8_size, HAL_MAX_DELAY);
+            teste++;
+        }
+        taskYIELD();
+    }
 }
+
 
 void check_status(HAL_StatusTypeDef status);
 /* USER CODE END PFP */
@@ -187,7 +193,7 @@ int main(void) {
 
 	/* USER CODE BEGIN RTOS_QUEUES */
 	/* add queues, ... */
-	queue_tx = xQueueCreate(16, sizeof(FilteredData));
+	queue_tx = xQueueCreate(32, sizeof(FilteredData));
 	/* USER CODE END RTOS_QUEUES */
 
 	/* Create the thread(s) */
