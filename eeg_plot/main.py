@@ -8,13 +8,15 @@ from collections import deque
 from PyQt5 import QtWidgets, QtCore
 import pyqtgraph as pg
 
+ADC_VOLTAGE_TO_EEG = (1/2062.5) * 1e6 #uV
 
 class SerialReader(threading.Thread):
     """Thread que lê dados da UART continuamente"""
-    def __init__(self, port: str, baudrate: int, queue_size: int = 3300):
+    def __init__(self, port: str, baudrate: int, queue_size: int = 3300, conv: float = ADC_VOLTAGE_TO_EEG):
         super().__init__(daemon=True)
         self.port = port
         self.baudrate = baudrate
+        self.conv = conv
         self.running = True
         self.lock = threading.Lock()
         self.ser = serial.Serial(port=self.port, baudrate=self.baudrate, timeout=1)
@@ -43,6 +45,10 @@ class SerialReader(threading.Thread):
                 if not (0 <= ch1 <= 3.5 and 0 <= ch2 <= 3.5):
                     continue
 
+                # aplicar offset e fator de conversão
+                ch1 = (ch1 - 1.65) * self.conv
+                ch2 = (ch2 - 1.65) * self.conv
+
                 with self.lock:
                     self.data_ch1.append(ch1)
                     self.data_ch2.append(ch2)
@@ -61,7 +67,7 @@ class PlotWindow(pg.GraphicsLayoutWidget):
     """Gráficos: sinais no tempo e FFT em dB"""
     def __init__(self, reader: SerialReader, sample_rate: float = 3300.0, update_rate: int = 60):
         super().__init__()
-        self.setWindowTitle("Leitura UART + FFT (dB) em tempo real")
+        self.setWindowTitle("Leitura UART + FFT (dB)")
         self.resize(1000, 800)
         self.reader = reader
         self.sample_rate = sample_rate
@@ -69,26 +75,44 @@ class PlotWindow(pg.GraphicsLayoutWidget):
         pg.setConfigOptions(antialias=True)
         layout = self.ci
 
-        # linha 1: sinais no tempo
-        self.p1 = layout.addPlot(title="Canal 1 (Tempo)")
-        self.p1.setYRange(0, 3.5)
+        # linha 1: sinais no tempo (em microvolts)
+        self.p1 = layout.addPlot(title="EEG - Canal 1 (Tempo - µV)")
+        self.p1.setLabel('bottom', 'Amostras')
+        self.p1.setLabel('left', 'Amplitude (µV)')
+        self.p1.setYRange(-900, 900)  # faixa de nossa leitura é -800 a 800
+        self.p1.setLimits(yMin=-900, yMax=900)
+        self.p1.setMouseEnabled(x=False, y=True) # desabilitando zoom no eixo x
         self.p1.showGrid(x=True, y=True)
         self.curve_ch1 = self.p1.plot(pen='r')
 
-        self.p3 = layout.addPlot(title="Canal 2 (Tempo)")
-        self.p3.setYRange(0, 3.5)
+        self.p3 = layout.addPlot(title="EEG - Canal 2 (Tempo - µV)")
+        self.p3.setLabel('bottom', 'Amostras')
+        self.p3.setLabel('left', 'Amplitude (µV)')
+        self.p3.setYRange(-900, 900)  # faixa de nossa leitura é -800 a 800
+        self.p3.setLimits(yMin=-900, yMax=900)
+        self.p3.setMouseEnabled(x=False, y=True) # desabilitando zoom no eixo x
         self.p3.showGrid(x=True, y=True)
         self.curve_ch2 = self.p3.plot(pen='b')
 
         layout.nextRow()
 
         # linha 2: FFTs em dB
-        self.p2 = layout.addPlot(title="Canal 1 (FFT em dB)")
+        self.p2 = layout.addPlot(title="EEG - Canal 1 (FFT em dB)")
+        self.p2.setLabel('bottom', 'Frequência (Hz)')
+        self.p2.setLabel('left', 'Magnitude (dB)')
         self.p2.showGrid(x=True, y=True)
+        self.p2.setYRange(-120, 0)
+        self.p2.setLimits(yMin=-130, yMax=100)
+        self.p2.setMouseEnabled(x=False, y=True) # desabilitando zoom no eixo x
         self.curve_fft1 = self.p2.plot(pen='r')
 
-        self.p4 = layout.addPlot(title="Canal 2 (FFT em dB)")
+        self.p4 = layout.addPlot(title="EEG - Canal 2 (FFT em dB)")
+        self.p4.setLabel('bottom', 'Frequência (Hz)')
+        self.p4.setLabel('left', 'Magnitude (dB)')
         self.p4.showGrid(x=True, y=True)
+        self.p4.setYRange(-120, 0)
+        self.p4.setLimits(yMin=-130, yMax=100)
+        self.p4.setMouseEnabled(x=False, y=True) # desabilitando zoom no eixo x
         self.curve_fft2 = self.p4.plot(pen='b')
 
         # timer para atualizar o frame
@@ -128,10 +152,6 @@ class PlotWindow(pg.GraphicsLayoutWidget):
             # teste para remover linha do inicio
             self.curve_fft1.setData(freqs[1:], fft1_db[1:])
             self.curve_fft2.setData(freqs[1:], fft2_db[1:])
-
-            # eixo Y típico de FFT em dB
-            self.p2.setYRange(-120, 0)
-            self.p4.setYRange(-120, 0)
 
         except Exception as e:
             print("Erro na FFT:", e)
