@@ -1,12 +1,13 @@
 import sys
 import struct
 import serial
-import platform
 import threading
-import numpy as np
 from collections import deque
-from PyQt5 import QtWidgets, QtCore
+from serial.tools.list_ports import comports
+
+import numpy as np
 import pyqtgraph as pg
+from PyQt5 import QtWidgets, QtCore
 
 ADC_VOLTAGE_TO_EEG = (1/2062.5) * 1e6 #uV
 
@@ -157,8 +158,40 @@ class EegWindow(pg.GraphicsLayoutWidget):
             print("Erro na FFT:", e)
 
 
+def serial_port_selector():
+    # Filtra apenas portas com VID e PID (dispositivos reais, geralmente USB)
+    ports = [p for p in comports() if p.vid is not None and p.pid is not None]
+
+    if not ports:
+        print("Nenhuma porta serial ativa encontrada.")
+        return None
+
+    print("\nDispositivos seriais conectados:\n")
+    for i, port in enumerate(ports):
+        print(f"[{i}] {port.device}")
+        print(f"    Nome: {port.name}")
+        print(f"    Descrição: {port.description or 'n/a'}")
+        print(f"    Hardware ID: {port.hwid or 'n/a'}")
+        print(f"    USB Vendor ID (VID): {port.vid}")
+        print(f"    USB Product ID (PID): {port.pid}")
+        if port.serial_number:
+            print(f"    Serial Number: {port.serial_number}")
+        print("-" * 88)
+
+    while True:
+        try:
+            escolha = int(input("\nSelecione o número da porta desejada: "))
+            if 0 <= escolha < len(ports):
+                porta_escolhida = ports[escolha].device
+                return porta_escolhida
+            else:
+                print("Índice inválido. Tente novamente.")
+        except ValueError:
+            print("Entrada inválida. Digite apenas o número correspondente à porta.")
+
+
 def main():
-    port = "COM3" if platform.system() == "Windows" else "/dev/ttyACM0"
+    port = serial_port_selector()
     baud = 209700
 
     reader = SerialReader(port, baud)
