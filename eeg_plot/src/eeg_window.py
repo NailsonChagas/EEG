@@ -8,6 +8,7 @@ class EegWindow(pg.GraphicsLayoutWidget):
         super().__init__()
         self.setWindowTitle("EEG + FFT (dB)")
         self.resize(1000, 800)
+        self.setMinimumSize(800, 600)
         self.reader = reader
         self.sample_rate = sample_rate
 
