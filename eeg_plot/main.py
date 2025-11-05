@@ -8,6 +8,9 @@ from src.serial_reader import SerialReader
 def main():
     port = serial_port_selector()
 
+    if port == None: 
+        return
+
     baud = 209700
     reader = SerialReader(port, baud)
 
