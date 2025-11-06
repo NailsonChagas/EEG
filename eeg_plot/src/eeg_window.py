@@ -44,6 +44,7 @@ class EegWindow(pg.GraphicsLayoutWidget):
     def _setup_plot(self, plot):
         plot.setLabel('bottom', 'Amostras')
         plot.setLabel('left', 'Amplitude (µV)')
+        plot.setXRange(0, 3300)
         plot.setYRange(-900, 900)
         plot.setLimits(yMin=-900, yMax=900)
         plot.setMouseEnabled(x=False, y=True)
@@ -52,7 +53,7 @@ class EegWindow(pg.GraphicsLayoutWidget):
     def _setup_fft_plot(self, plot):
         plot.setLabel('bottom', 'Frequência (Hz)')
         plot.setLabel('left', 'Magnitude (dB)')
-        plot.setYRange(-120, 0)
+        plot.setYRange(-60, 60)
         plot.setLimits(yMin=-130, yMax=100)
         plot.setMouseEnabled(x=False, y=True)
         plot.showGrid(x=True, y=True)
@@ -69,14 +70,26 @@ class EegWindow(pg.GraphicsLayoutWidget):
         self.curve_ch2.setData(ch2)
 
         try:
-            fft1 = np.abs(np.fft.rfft(ch1 - np.mean(ch1)))
-            fft2 = np.abs(np.fft.rfft(ch2 - np.mean(ch2)))
+            window = np.hanning(len(ch1))
+
+            fft1 = np.abs(np.fft.rfft((ch1 - np.mean(ch1)) * window)) / len(ch1)
+            fft2 = np.abs(np.fft.rfft((ch2 - np.mean(ch2)) * window)) / len(ch2)
             freqs = np.fft.rfftfreq(len(ch1), 1 / self.sample_rate)
 
-            fft1_db = 20 * np.log10(fft1 / np.max(fft1) + 1e-12)
-            fft2_db = 20 * np.log10(fft2 / np.max(fft2) + 1e-12)
+            fft1_db = 20 * np.log10(fft1 + 1e-12)
+            fft2_db = 20 * np.log10(fft2 + 1e-12)
 
-            self.curve_fft1.setData(freqs[1:], fft1_db[1:])
-            self.curve_fft2.setData(freqs[1:], fft2_db[1:])
+            self.curve_fft1.setData(freqs, fft1_db)
+            self.curve_fft2.setData(freqs, fft2_db)
+
+            # fft1 = np.abs(np.fft.rfft(ch1 - np.mean(ch1)))
+            # fft2 = np.abs(np.fft.rfft(ch2 - np.mean(ch2)))
+            # freqs = np.fft.rfftfreq(len(ch1), 1 / self.sample_rate)
+
+            # fft1_db = 20 * np.log10(fft1 / np.max(fft1) + 1e-12)
+            # fft2_db = 20 * np.log10(fft2 / np.max(fft2) + 1e-12)
+
+            # self.curve_fft1.setData(freqs[1:], fft1_db[1:])
+            # self.curve_fft2.setData(freqs[1:], fft2_db[1:])
         except Exception as e:
             print("Erro na FFT:", e)
