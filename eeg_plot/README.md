@@ -90,3 +90,7 @@ EEG (µV) = (V - 1.65) * (1 / 2062.5) * 1e6
 ```
 
 O valor **1.65 V** representa o *offset* introduzido pelo circuito de condicionamento, enquanto **2062.5** corresponde ao ganho total do sistema de aquisição.
+
+## Problemas
+Checar com o professor o por que a FFT esta com o pico deslocado (talvez o fs estejá errado??)
+

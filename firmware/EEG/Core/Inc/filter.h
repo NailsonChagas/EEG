@@ -10,4 +10,5 @@ typedef struct {
 
 void init_notch_filter(BiquadFilter *filter_instance, float fs, float fc,
 		float bw);
+void init_lp_filter(BiquadFilter *filter_instance, float fs, float fc, float q);
 float apply_filter(BiquadFilter *filter_instance, float input);

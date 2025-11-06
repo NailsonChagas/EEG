@@ -17,6 +17,21 @@ void init_notch_filter(BiquadFilter *filter_instance, float fs, float fc,
 	filter_instance->a2 = (1.0f - alpha) / a0;
 }
 
+void init_lp_filter(BiquadFilter *filter_instance, float fs, float fc, float q) {
+	// https://webaudio.github.io/Audio-EQ-Cookbook/audio-eq-cookbook.html
+	float omega_0 = PI2 * (fc / fs);
+	float sin_omega = sin(omega_0);
+	float cos_omega = cos(omega_0);
+	float alpha = sin_omega / (2.0f * q);
+	float a0 = 1.0f + alpha;
+
+	filter_instance->b0 = ((1.0f - cos_omega) / 2.0f) / a0;
+	filter_instance->b1 = (1.0f - cos_omega) / a0;
+	filter_instance->b2 = ((1.0f - cos_omega) / 2.0f) / a0;
+	filter_instance->a1 = (-2.0f * cos_omega) / a0;
+	filter_instance->a2 = (1.0f - alpha) / a0;
+}
+
 float apply_filter(BiquadFilter *filter_instance, float input) {
 	// Faltando pesquisar como usar instruções ARM MAC
 	float output = (filter_instance->b0 * input)

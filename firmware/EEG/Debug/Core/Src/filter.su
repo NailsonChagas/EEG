@@ -1,2 +1,3 @@
 ../Core/Src/filter.c:3:6:init_notch_filter	64	static
-../Core/Src/filter.c:20:7:apply_filter	24	static
+../Core/Src/filter.c:20:6:init_lp_filter	48	static
+../Core/Src/filter.c:35:7:apply_filter	24	static

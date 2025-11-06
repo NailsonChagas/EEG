@@ -6,7 +6,6 @@ import struct
 import threading
 from collections import deque
 
-# Ganho esta certo, testar novamente um um gerador de função
 ADC_VOLTAGE_TO_EEG = (1 / 2062.5) * 1e6  # µV
 OFFSET = 1.65 # V
 
