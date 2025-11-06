@@ -26,7 +26,7 @@ eeg_plot/
 ## Requisitos
 Antes de executar o projeto, certifique-se de ter:
 
-- Python **3.8+**
+- Python **3.10**
 - Instalado as dependências:
     - Windows:
         ```bash
