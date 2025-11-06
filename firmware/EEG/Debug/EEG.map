@@ -6502,33 +6502,33 @@ LOAD /opt/st/stm32cubeide_1.18.1/plugins/com.st.stm32cube.ide.mcu.externaltools.
  .debug_macro   0x000037d0      0x246 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
  .debug_macro   0x00003a16      0x1c0 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
 
-.debug_line     0x00000000    0x1bc6b
+.debug_line     0x00000000    0x1bc6f
  .debug_line    0x00000000      0x528 ./Core/Src/filter.o
- .debug_line    0x00000528      0xd48 ./Core/Src/main.o
- .debug_line    0x00001270      0x884 ./Core/Src/stm32g4xx_hal_msp.o
- .debug_line    0x00001af4      0x756 ./Core/Src/stm32g4xx_hal_timebase_tim.o
- .debug_line    0x0000224a      0x7bf ./Core/Src/stm32g4xx_it.o
- .debug_line    0x00002a09      0x75a ./Core/Src/system_stm32g4xx.o
- .debug_line    0x00003163       0x7b ./Core/Startup/startup_stm32g431rbtx.o
- .debug_line    0x000031de      0xb26 ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.o
- .debug_line    0x00003d04     0x1f30 ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.o
- .debug_line    0x00005c34     0x1947 ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.o
- .debug_line    0x0000757b      0xc8b ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.o
- .debug_line    0x00008206      0xe25 ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma.o
- .debug_line    0x0000902b      0xaff ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.o
- .debug_line    0x00009b2a      0xc85 ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.o
- .debug_line    0x0000a7af      0xfa9 ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.o
- .debug_line    0x0000b758     0x10d5 ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.o
- .debug_line    0x0000c82d     0x3e8d ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.o
- .debug_line    0x000106ba     0x1f6d ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.o
- .debug_line    0x00012627     0x354b ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.o
- .debug_line    0x00015b72      0xc5b ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.o
- .debug_line    0x000167cd     0x11e3 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
- .debug_line    0x000179b0      0x6cc ./Middlewares/Third_Party/FreeRTOS/Source/list.o
- .debug_line    0x0001807c     0x1323 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
- .debug_line    0x0001939f     0x1769 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
- .debug_line    0x0001ab08      0x880 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
- .debug_line    0x0001b388      0x8e3 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
+ .debug_line    0x00000528      0xd4c ./Core/Src/main.o
+ .debug_line    0x00001274      0x884 ./Core/Src/stm32g4xx_hal_msp.o
+ .debug_line    0x00001af8      0x756 ./Core/Src/stm32g4xx_hal_timebase_tim.o
+ .debug_line    0x0000224e      0x7bf ./Core/Src/stm32g4xx_it.o
+ .debug_line    0x00002a0d      0x75a ./Core/Src/system_stm32g4xx.o
+ .debug_line    0x00003167       0x7b ./Core/Startup/startup_stm32g431rbtx.o
+ .debug_line    0x000031e2      0xb26 ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal.o
+ .debug_line    0x00003d08     0x1f30 ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.o
+ .debug_line    0x00005c38     0x1947 ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc_ex.o
+ .debug_line    0x0000757f      0xc8b ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.o
+ .debug_line    0x0000820a      0xe25 ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma.o
+ .debug_line    0x0000902f      0xaff ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.o
+ .debug_line    0x00009b2e      0xc85 ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.o
+ .debug_line    0x0000a7b3      0xfa9 ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc.o
+ .debug_line    0x0000b75c     0x10d5 ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_rcc_ex.o
+ .debug_line    0x0000c831     0x3e8d ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.o
+ .debug_line    0x000106be     0x1f6d ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.o
+ .debug_line    0x0001262b     0x354b ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.o
+ .debug_line    0x00015b76      0xc5b ./Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.o
+ .debug_line    0x000167d1     0x11e3 ./Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.o
+ .debug_line    0x000179b4      0x6cc ./Middlewares/Third_Party/FreeRTOS/Source/list.o
+ .debug_line    0x00018080     0x1323 ./Middlewares/Third_Party/FreeRTOS/Source/queue.o
+ .debug_line    0x000193a3     0x1769 ./Middlewares/Third_Party/FreeRTOS/Source/tasks.o
+ .debug_line    0x0001ab0c      0x880 ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_line    0x0001b38c      0x8e3 ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
 
 .debug_str      0x00000000    0xe43a5
  .debug_str     0x00000000    0xe43a5 ./Core/Src/filter.o
