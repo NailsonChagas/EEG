@@ -17,11 +17,11 @@ class EegWindow(pg.GraphicsLayoutWidget):
 
         # sinais no tempo
         self.p1 = layout.addPlot(title="EEG - Canal 1 (Tempo - µV)")
-        self._setup_plot(self.p1, 'r')
+        self._setup_plot(self.p1)
         self.curve_ch1 = self.p1.plot(pen='r')
 
         self.p3 = layout.addPlot(title="EEG - Canal 2 (Tempo - µV)")
-        self._setup_plot(self.p3, 'b')
+        self._setup_plot(self.p3)
         self.curve_ch2 = self.p3.plot(pen='b')
 
         layout.nextRow()
@@ -41,7 +41,7 @@ class EegWindow(pg.GraphicsLayoutWidget):
         self.timer.timeout.connect(self.update_plots)
         self.timer.start(freq)
 
-    def _setup_plot(self, plot, color):
+    def _setup_plot(self, plot):
         plot.setLabel('bottom', 'Amostras')
         plot.setLabel('left', 'Amplitude (µV)')
         plot.setYRange(-900, 900)
@@ -52,10 +52,10 @@ class EegWindow(pg.GraphicsLayoutWidget):
     def _setup_fft_plot(self, plot):
         plot.setLabel('bottom', 'Frequência (Hz)')
         plot.setLabel('left', 'Magnitude (dB)')
-        plot.showGrid(x=True, y=True)
         plot.setYRange(-120, 0)
         plot.setLimits(yMin=-130, yMax=100)
         plot.setMouseEnabled(x=False, y=True)
+        plot.showGrid(x=True, y=True)
 
     def update_plots(self):
         with self.reader.lock:
