@@ -6,8 +6,9 @@ import struct
 import threading
 from collections import deque
 
+# Ganho esta certo, testar novamente um um gerador de função
 ADC_VOLTAGE_TO_EEG = (1 / 2062.5) * 1e6  # µV
-
+OFFSET = 1.65 # V
 
 class SerialReader(threading.Thread):
     """Thread que lê dados da UART continuamente"""
@@ -69,8 +70,8 @@ class SerialReader(threading.Thread):
                 if not (0 <= ch1 <= 3.5 and 0 <= ch2 <= 3.5):
                     continue
 
-                ch1 = (ch1 - 1.65) * self.conv
-                ch2 = (ch2 - 1.65) * self.conv
+                ch1 = (ch1 - OFFSET) * self.conv
+                ch2 = (ch2 - OFFSET) * self.conv
 
                 with self.lock:
                     self.data_ch1.append(ch1)
