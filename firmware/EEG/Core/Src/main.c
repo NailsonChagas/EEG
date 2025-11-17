@@ -78,9 +78,9 @@ SemaphoreHandle_t sem_uart = NULL;
 SemaphoreHandle_t sem_ad = NULL;
 QueueHandle_t queue_tx = NULL;
 TimerHandle_t btn_c13_debounce;
-uint8_t is_low_power_mode = 0;
+volatile uint8_t is_low_power_mode = 0;
 
-uint32_t teste = 0;
+volatile uint32_t teste = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
