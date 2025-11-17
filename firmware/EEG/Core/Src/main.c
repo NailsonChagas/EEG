@@ -78,9 +78,9 @@ SemaphoreHandle_t sem_uart = NULL;
 SemaphoreHandle_t sem_ad = NULL;
 QueueHandle_t queue_tx = NULL;
 TimerHandle_t btn_c13_debounce;
+uint8_t is_low_power_mode = 0;
 
 uint32_t teste = 0;
-uint32_t teste_botao = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -94,11 +94,101 @@ static void MX_LPUART1_UART_Init(void);
 void StartFilterTask(void const * argument);
 
 /* USER CODE BEGIN PFP */
-void btn_c13_callback( TimerHandle_t xTimer )
+void check_status(HAL_StatusTypeDef status);
+
+// FreeRTOS config param: USE_IDLE_HOOK enable
+void vApplicationIdleHook(void)
+{
+    if (!is_low_power_mode)   // só usar no modo automático
+    {
+    	// Wait For Interrupt
+        // garante que acorda via ADC, UART, EXTI, etc
+        __WFI();   // CPU entra em sleep até próxima interrupção
+    }
+}
+
+void init_adc_tim2(void)
+{
+	HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
+	HAL_ADCEx_Calibration_Start(&hadc2, ADC_SINGLE_ENDED);
+
+	check_status(HAL_ADC_Start(&hadc2));
+	check_status(
+			HAL_ADCEx_MultiModeStart_DMA(&hadc1, (uint32_t*) adc_dual_buffer,
+			NUMBER_OF_AQ));
+
+	HAL_TIM_Base_Start(&htim2);
+}
+
+/*
+ * toggle_power_mode():
+ *
+ * Alterna entre modo normal e modo de baixo consumo (STOP1).
+ *
+ * Quando entra em STOP1:
+ * - Marca que está em low-power.
+ * - Para temporizadores, ADCs e DMA para reduzir consumo.
+ * - Desabilita clocks dos ADCs e DMA.
+ * - Limpa e habilita EXTI para permitir despertar por interrupção.
+ * - Suspende o SysTick (economia extra).
+ * - Entra em STOP1 (CPU dorme até interrupção).
+ *
+ * Ao acordar do STOP1:
+ * - Retoma SysTick.
+ *
+ * Quando retorna ao modo normal:
+ * - Marca que saiu do low-power.
+ * - Reconfigura o clock (essencial após STOP).
+ * - Reabilita clocks dos periféricos.
+ * - Recalibra e reinicia ADCs + DMA.
+ * - Reinicia temporizador.
+ */
+void toggle_power_mode(void)
+{
+	if (!is_low_power_mode)
+	    {
+	        is_low_power_mode = 1;
+
+	        // parar timers, ADCs, UART, DMA (para economizar energia)
+	        HAL_TIM_Base_Stop(&htim2);
+	        HAL_ADC_Stop_DMA(&hadc1);
+	        HAL_ADC_Stop(&hadc2);
+
+	        __HAL_RCC_ADC12_CLK_DISABLE();
+	        __HAL_RCC_DMA1_CLK_DISABLE();
+
+	        // Limpa interrupções pendentes
+	        __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_13);
+
+	        // Habilita EXTI para acordar
+	        HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
+	        // Entra em modo STOP1
+	        HAL_SuspendTick();   // reduz consumo
+	        // Sem SysTick não existe troca de contexto -> FreeRTOS congela
+	        HAL_PWREx_EnterSTOP1Mode(PWR_STOPENTRY_WFI);
+
+	        // ---- quando acordar do STOP, continua daqui ----
+	        HAL_ResumeTick();
+	    }
+	    else
+	    {
+	        is_low_power_mode = 0;
+
+	        SystemClock_Config();   // STOP destrói o clock -> iniciar de novo
+
+	        __HAL_RCC_DMA1_CLK_ENABLE();
+	        __HAL_RCC_ADC12_CLK_ENABLE();
+
+	        // reconfigura ADC + DMA
+	        init_adc_tim2();
+	    }
+}
+
+void btn_c13_callback(TimerHandle_t xTimer)
 {
 	// entrar/sair de Low Power Mode
-	teste_botao++;
-
+	toggle_power_mode();
 	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);  // Reabilita interrupções
 }
 
@@ -146,7 +236,6 @@ void SendDataTask(void *param) {
 	}
 }
 
-void check_status(HAL_StatusTypeDef status);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -196,15 +285,7 @@ int main(void)
 	init_lp_filter(&lp_filter_AD1, FS, FC_LP, Q);
 	init_lp_filter(&lp_filter_AD2, FS, FC_LP, Q);
 
-	HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);
-	HAL_ADCEx_Calibration_Start(&hadc2, ADC_SINGLE_ENDED);
-
-	check_status(HAL_ADC_Start(&hadc2));
-	check_status(
-			HAL_ADCEx_MultiModeStart_DMA(&hadc1, (uint32_t*) adc_dual_buffer,
-			NUMBER_OF_AQ));
-
-	HAL_TIM_Base_Start(&htim2);
+	init_adc_tim2();
 
   /* USER CODE END 2 */
 
