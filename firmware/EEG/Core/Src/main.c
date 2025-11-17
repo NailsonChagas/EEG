@@ -77,7 +77,10 @@ volatile float filtered_ad1, filtered_ad2;
 SemaphoreHandle_t sem_uart = NULL;
 SemaphoreHandle_t sem_ad = NULL;
 QueueHandle_t queue_tx = NULL;
+TimerHandle_t btn_c13_debounce;
+
 uint32_t teste = 0;
+uint32_t teste_botao = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -91,6 +94,25 @@ static void MX_LPUART1_UART_Init(void);
 void StartFilterTask(void const * argument);
 
 /* USER CODE BEGIN PFP */
+void btn_c13_callback( TimerHandle_t xTimer )
+{
+	// entrar/sair de Low Power Mode
+	teste_botao++;
+
+	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);  // Reabilita interrupções
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	if(GPIO_Pin == GPIO_PIN_13)
+	{
+		BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
+		HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);  // Desabilita interrupções
+		xTimerStartFromISR(btn_c13_debounce, &pxHigherPriorityTaskWoken);
+		portYIELD_FROM_ISR(pxHigherPriorityTaskWoken);
+	}
+}
+
 
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
 	// Ao ler AD abre o semaforo
@@ -198,6 +220,7 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_TIMERS */
 	/* start timers, add new ones, ... */
+	btn_c13_debounce = xTimerCreate("BTN13 debounce", 50, pdFALSE, NULL, btn_c13_callback);
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
@@ -518,13 +541,25 @@ static void MX_DMA_Init(void)
   */
 static void MX_GPIO_Init(void)
 {
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
   /* USER CODE BEGIN MX_GPIO_Init_1 */
 
   /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  /*Configure GPIO pin : PC13 */
+  GPIO_InitStruct.Pin = GPIO_PIN_13;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
