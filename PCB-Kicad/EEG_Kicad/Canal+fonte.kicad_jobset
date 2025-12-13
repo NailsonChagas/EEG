@@ -1,0 +1,17 @@
+{
+  "jobs": [],
+  "meta": {
+    "version": 1
+  },
+  "outputs": [
+    {
+      "description": "",
+      "id": "3a9122c7-acb9-48fb-bfa4-73b3226c86ec",
+      "only": [],
+      "settings": {
+        "output_path": "Canal+fonte"
+      },
+      "type": "folder"
+    }
+  ]
+}
